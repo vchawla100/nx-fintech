@@ -1,7 +1,7 @@
-import { AppBar, Box, Button, Toolbar, styled } from "@mui/material";
+import { AppBar, Box, Button, Toolbar, styled, useTheme, useMediaQuery } from "@mui/material";
 import Logo from "../assets/Logo.svg";
-import { useState } from "react";
-import { UseModal } from "../context/ModalContext";
+import { useModal } from "../context/ModalContext";
+import zIndex from "@mui/material/styles/zIndex";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -19,7 +19,7 @@ const LoginButton = styled(Button)(({ theme }) => ({
   background: "linear-gradient(to right, #418F86, #5dbaaf)",
   color: "#fff",
   "&:hover": {
-    background: "linear-gradient(to right, #418F86, #5dbaaf)",
+    background: "linear-gradient(to right, #4FAF9F, #6FC4BB)",
   },
   borderRadius: "0.5rem",
 }));
@@ -28,10 +28,13 @@ const navItems = ["About Us", "Services", "Contact Us", "FAQs", "Blogs"]; // use
 
 
 const Navbar = () => {
-  const modal = UseModal();
+  const modal = useModal();
+
+  // const theme = useTheme();
+  // const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
   
   return (
-    <Box height={"50%"}>
+    <Box >
       <AppBar position="sticky" component="nav" color="transparent">
         <StyledToolbar>
           <Box>

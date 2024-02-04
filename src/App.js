@@ -1,5 +1,4 @@
 import React from "react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Box, styled } from "@mui/material";
 import Main from "./components/Main";
 import './App.css'

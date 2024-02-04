@@ -17,7 +17,7 @@ import image6 from "../assets/RollerIcons/LampGate.svg"; // 13.5
 import image7 from "../assets/RollerIcons/Facade.svg"; // -4.9
 
 const StyledContainer = styled("div")(({}) => ({
-  backgroundColor: "turquoise",
+  backgroundColor: "",
   position: "relative",
   height: "89vh",
   display: "flex",
@@ -61,7 +61,7 @@ const Main = () => {
     : "4rem";
 
   return (
-    <Box >
+    <Box>
       <StyledContainer>
         <OverlappingImages>
           <RotatedImage src={image7} alt="broken" degree={0.1} />
@@ -73,7 +73,6 @@ const Main = () => {
           <RotatedImage src={image1} alt="broken" degree={-4.9} />
         </OverlappingImages>
         <Typography
-          // variant="h1"
           style={{
             position: "absolute",
             color: "#418F86",
@@ -97,8 +96,11 @@ const Main = () => {
         }}
       >
     </Box> */}
-        <Sidebar />
       </StyledContainer>
+
+      <Box display={'none'}>
+        <Sidebar />
+      </Box>
     </Box>
   );
 };
