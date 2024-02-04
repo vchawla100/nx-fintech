@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import {ModalContextProvider} from "./context/ModalContext";
+import { ModalContextProvider } from "./context/ModalContext";
+import { FormContextProvider } from "./context/FormContext";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 
 const defaultColors = {
   primary: "#418F86",
@@ -48,9 +50,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ModalContextProvider>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
+      <FormContextProvider>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </FormContextProvider>
     </ModalContextProvider>
   </React.StrictMode>
 );

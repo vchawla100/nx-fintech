@@ -1,7 +1,8 @@
+// Dump File
+/*
 import { TextField, styled, alpha } from "@mui/material";
 import { useState } from "react";
-import { handlePreview } from "../Utils/PreviewHandler";
-
+import { useForm } from "../context/FormContext";
 
 const RedditTextField = styled((props) => (
   <TextField InputProps={{ disableUnderline: true }} {...props} />
@@ -28,15 +29,11 @@ const RedditTextField = styled((props) => (
   },
 }));
 
-const StyledTextField = ({ attr, label, stage, required }) => {
-  const [value, setValue] = useState('');
+const StyledTextField = ({ value, attr, label, stage, required }) => {
+  const form = useForm();
 
   const handleChange = (e) => {
-    // if(!preview) setValue(e.target.value)
-    setValue(e.target.value)
-
-    // const previewedValue = handlePreview(e.target.value, attr);
-    // setValue(previewedValue);
+    form.setFields({ ...form.fields });
   };
   return (
     <>
@@ -46,11 +43,14 @@ const StyledTextField = ({ attr, label, stage, required }) => {
         variant="filled"
         style={{ marginTop: 11 }}
         required={required}
-        value={value}
-        onChange={handleChange}
+        value={form.fields.attr}
+
+        // onChange={(e) => form.setFields((fields) => ({ ...fields, ['number']: e.target.value }))}
       />
     </>
   );
 };
 
 export default StyledTextField;
+
+*/

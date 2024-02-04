@@ -31,15 +31,15 @@ const OverlappingImages = styled(Box)(({}) => ({
   top: 0,
   left: 0,
   "& > img": {
-    width: "10rem",
-    height: "10rem",
+    width: "12rem",
+    height: "15rem",
     margin: "0px", // Add margin between images if needed
     position: "absolute",
   },
 }));
 
 const RotatedImage = ({ src, alt }) => {
-  return <img src={src} alt={alt} position="absolute" />;
+  return <img src={src} alt={alt}  position="absolute" />;
 };
 
 const Main = () => {

@@ -1,7 +1,6 @@
 import { AppBar, Box, Button, Toolbar, styled, useTheme, useMediaQuery } from "@mui/material";
 import Logo from "../assets/Logo.svg";
 import { useModal } from "../context/ModalContext";
-import zIndex from "@mui/material/styles/zIndex";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -30,12 +29,12 @@ const navItems = ["About Us", "Services", "Contact Us", "FAQs", "Blogs"]; // use
 const Navbar = () => {
   const modal = useModal();
 
-  // const theme = useTheme();
-  // const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
+  const theme = useTheme();
+  const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
   
   return (
-    <Box >
-      <AppBar position="sticky" component="nav" color="transparent">
+    <Box  >
+      <AppBar position="sticky" component="nav" color="transparent" >
         <StyledToolbar>
           <Box>
             <img src={Logo} alt="Logo" width="100" height="20" />
