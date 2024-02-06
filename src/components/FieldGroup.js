@@ -27,7 +27,7 @@ const RedditTextField = styled((props) => (
   },
 }));
 
-const FieldGroup = ({ stage }) => {
+const FieldGroup = ({ stage, setFieldCount }) => {
   const {
     number,
     setNumber,
@@ -40,6 +40,31 @@ const FieldGroup = ({ stage }) => {
   } = useForm();
 
   console.log(number, name, email, vehicleNo);
+
+  const handleBlur = (e, attr) => {
+    let val = e.target.value;
+
+    if (attr === "number") {
+      if (!/^\d+$/.test(val)) {
+        alert("Please input some Numerical values.");
+        setNumber("");
+        return
+      }
+    } else if (attr === "email") {
+      if (!val.includes("@") || val.substring(0, val.indexOf("@")).length < 2) {
+        alert("Please input a valid e-mail address.");
+        setEmail("");
+        return
+      }
+    } else if (attr === "vehicleNo") {
+      if (val.length < 5) {
+        alert("Please input a valid Vehicle number.");
+        setVehicleNo("");
+        return
+      }
+    }
+    setFieldCount((number && name && email && vehicleNo) ? 4 : 0);
+  };
 
   return (
     <Box
@@ -55,6 +80,7 @@ const FieldGroup = ({ stage }) => {
         value={stage === 1 ? handlePreview(number, "number") : number}
         label="Enter your number"
         onChange={(e) => setNumber(e.target.value)}
+        onBlur={(e) => handleBlur(e, "number")}
         disabled={stage === 1}
         required
       />
@@ -63,6 +89,7 @@ const FieldGroup = ({ stage }) => {
         value={stage === 1 ? handlePreview(name, "name") : name}
         label="Enter your name"
         onChange={(e) => setName(e.target.value)}
+        onBlur={(e) => handleBlur(e, "name")}
         disabled={stage === 1}
       />
       <RedditTextField
@@ -70,6 +97,7 @@ const FieldGroup = ({ stage }) => {
         value={stage === 1 ? handlePreview(email, "email") : email}
         label="Enter your email"
         onChange={(e) => setEmail(e.target.value)}
+        onBlur={(e) => handleBlur(e, "email")}
         disabled={stage === 1}
       />
       <RedditTextField
@@ -77,6 +105,7 @@ const FieldGroup = ({ stage }) => {
         value={stage === 1 ? handlePreview(vehicleNo, "vehicleNo") : vehicleNo}
         label="Enter Vehicle Number"
         onChange={(e) => setVehicleNo(e.target.value)}
+        onBlur={(e) => handleBlur(e, "vehicleNo")}
         disabled={stage === 1}
       />
     </Box>

@@ -21,9 +21,11 @@ const OTPLander = () => {
   }, [timer]);
 
   const handleOtpChange = (index, value) => {
-    const newOtp = [...otp];
-    newOtp[index] = value;
-    setOtp(newOtp);
+    if (/^\d+$/.test(value) || value === "") {
+      const newOtp = [...otp];
+      newOtp[index] = value;
+      setOtp(newOtp);
+    }
   };
 
   const handleResend = () => {
@@ -45,7 +47,7 @@ const OTPLander = () => {
             style={{
               width: "4rem",
               marginRight: "1rem",
-              textAlign:'center'
+              textAlign: "center",
             }}
           />
         ))}

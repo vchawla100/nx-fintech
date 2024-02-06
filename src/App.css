@@ -7,3 +7,18 @@ body {
   /* width: 20rem !important;
   height: 20rem !important; */
 }
+
+#mainLogo {
+  border-radius: 5%;
+  transition-duration: 400ms;
+}
+#mainLogo:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  transition-duration: 400ms;
+}
+
+#mainLogo:not(:hover) {
+  transform: scale(1);
+  transition-duration: 400ms;
+}

@@ -1,6 +1,15 @@
-import { AppBar, Box, Button, Toolbar, styled, useTheme, useMediaQuery } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Button,
+  Toolbar,
+  styled,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import Logo from "../assets/Logo.svg";
 import { useModal } from "../context/ModalContext";
+import "../App.css";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -25,19 +34,30 @@ const LoginButton = styled(Button)(({ theme }) => ({
 
 const navItems = ["About Us", "Services", "Contact Us", "FAQs", "Blogs"]; // used in Drawer and Toolbar
 
-
 const Navbar = () => {
   const modal = useModal();
 
   const theme = useTheme();
   const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
-  
+
+  const logoStyle = {
+    width: "100px",
+    height: "20px",
+    transitionDuration: "400ms",
+    cursor: "pointer",
+    "&:hover": {
+      transform: "scale(1.03)",
+      cursor: "pointer",
+      transitionDuration: "400ms",
+    },
+  };
+
   return (
-    <Box  >
-      <AppBar position="sticky" component="nav" color="transparent" >
+    <Box>
+      <AppBar position="sticky" component="nav" color="transparent">
         <StyledToolbar>
-          <Box>
-            <img src={Logo} alt="Logo" width="100" height="20" />
+          <Box style={logoStyle}>
+            <img id="mainLogo" src={Logo} alt="Logo" width="100" height="25" title="nx-fintech" />
           </Box>
 
           <RightTB>
@@ -55,11 +75,7 @@ const Navbar = () => {
               ))}
             </Box>
 
-            <LoginButton
-              onClick={() => modal.setOpen(true)}
-            >
-              Login
-            </LoginButton>
+            <LoginButton onClick={() => modal.setOpen(true)}>Login</LoginButton>
           </RightTB>
         </StyledToolbar>
       </AppBar>

@@ -11,7 +11,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import { useModal } from "../context/ModalContext";
-// import { useForm } from "../context/FormContext";
+
 import FieldGroup from "./FieldGroup";
 import OTPLander from "./OTPLander";
 
@@ -28,6 +28,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
 
 const Sidebar = () => {
   const [stage, setStage] = useState(0);
+  const [fieldCount, setFieldCount] = useState(0)
 
   const modal = useModal();
 
@@ -120,10 +121,10 @@ const Sidebar = () => {
             </Box>
           )}
 
-          {stage < 2 ? <FieldGroup stage={stage} /> : <OTPLander />}
+          {stage < 2 ? <FieldGroup stage={stage} setFieldCount={setFieldCount}/> : <OTPLander />}
 
           <Box>
-            <StyledButton onClick={handleNextClick}>Next</StyledButton>
+            <StyledButton onClick={handleNextClick} disabled={fieldCount < 4}>Next</StyledButton>
           </Box>
         </Box>
       </Box>
